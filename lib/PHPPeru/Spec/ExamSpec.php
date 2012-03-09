@@ -12,7 +12,7 @@
 
 namespace PHPPeru\Spec;
 
-use PHPPeru\Exam\Exam;
+use PHPPeru\Exam\SimpleExam;
 
 /**
  * ExamSpec.php: Short description.
