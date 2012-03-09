@@ -10,7 +10,7 @@
  * file that was distributed with this source code.
  */
 
-namespace PHPPeru\Exam\Spec;
+namespace PHPPeru\Spec;
 
 use PHPPeru\Exam\Exam;
 
@@ -25,6 +25,6 @@ class DescribeExam extends \PHPSpec\Context
 {
     public function itShouldTestSomething()
     {
-
+        $this->fail();
     }
 }

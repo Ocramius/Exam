@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-php ./phpspec-composer.php lib/PHPPeru/Exam -fdc
+php ./phpspec-composer.php lib/PHPPeru/Spec -fdc
