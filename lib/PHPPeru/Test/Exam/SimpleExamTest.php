@@ -173,15 +173,9 @@ class SimpleExamTest extends \PHPUnit_Framework_TestCase
      */
     public function testThrowBadMethodCallExceptionWhenExamCannotBeStarted()
     {
-        try {
-            $this->exam->start();
-            $this->exam->start();
-        }
-        catch (BadMethodCallException $expected) {
-            return;
-        }
-
-        $this->fail('An expected exception has not been raised.');
+        $this->setExpectedException('BadMethodCallException');
+        $this->exam->start();
+        $this->exam->start();
     }
 
     /**
@@ -190,16 +184,10 @@ class SimpleExamTest extends \PHPUnit_Framework_TestCase
      */
     public function testThrowBadMethodCallExceptionWhenExamCannotBeCompleted()
     {
-        try {
-            $this->exam->start();
-            $this->exam->complete();
-            $this->exam->complete();
-        }
-        catch (BadMethodCallException $expected) {
-            return;
-        }
-
-        $this->fail('An expected exception has not been raised.');
+        $this->setExpectedException('BadMethodCallException');
+        $this->exam->start();
+        $this->exam->complete();
+        $this->exam->complete();
     }
 
     /**
@@ -208,15 +196,9 @@ class SimpleExamTest extends \PHPUnit_Framework_TestCase
      */
     public function testThrowBadMethodCallExceptionWhenExamCannotBeAborted()
     {
-        try {
-            $this->exam->start();
-            $this->exam->abort();
-            $this->exam->abort();
-        }
-        catch (BadMethodCallException $expected) {
-            return;
-        }
-
-        $this->fail('An expected exception has not been raised.');
+        $this->setExpectedException('BadMethodCallException');
+        $this->exam->start();
+        $this->exam->abort();
+        $this->exam->abort();
     }
 }
