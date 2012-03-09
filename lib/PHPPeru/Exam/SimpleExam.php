@@ -19,6 +19,10 @@ class SimpleExam implements ExamInterface
     const STATUS_STARTED    = 1;
     const STATUS_ABORTED    = 2;
     const STATUS_COMPLETED  = 4;
+    
+    const EVENT_START       = 'start';
+    const EVENT_ABORT       = 'abort';
+    const EVENT_COMPLETE    = 'complete';
 
     /**
      * Event dispatcher used internally to trigger events during lifecycle
@@ -51,7 +55,7 @@ class SimpleExam implements ExamInterface
             throw new BadMethodCallException('Exam is not new');
         }
         $this->status = self::STATUS_STARTED;
-        $this->eventDispatcher->dispatch('begin', new Event($this));
+        $this->eventDispatcher->dispatch(self::EVENT_START, new Event($this));
     }
 
     /**
@@ -63,7 +67,7 @@ class SimpleExam implements ExamInterface
             throw new BadMethodCallException('Exam is not started');
         }
         $this->status = self::STATUS_ABORTED;
-        $this->eventDispatcher->dispatch('abort', new Event($this));
+        $this->eventDispatcher->dispatch(self::EVENT_ABORT, new Event($this));
     }
 
     /**
@@ -75,7 +79,7 @@ class SimpleExam implements ExamInterface
             throw new BadMethodCallException('Exam is not started');
         }
         $this->status = self::STATUS_COMPLETED;
-        $this->eventDispatcher->dispatch('complete', new Event($this));
+        $this->eventDispatcher->dispatch(self::EVENT_COMPLETE, new Event($this));
     }
 
     /**
