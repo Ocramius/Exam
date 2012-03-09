@@ -1,0 +1,11 @@
+{
+    "config" : { "bin-dir": "." },
+    "autoload": {
+            "psr-0": { "PHPPeru\\": "lib/" }
+    },
+    "require": {
+        "php": ">=5.3.2",
+        "symfony/event-dispatcher": "dev-master",
+        "cordoval/phpspec": "master"
+    }
+}
