@@ -1,5 +1,7 @@
 <?php
-namespace PHPPeru\Exam;
+namespace PHPPeru\Test\Exam;
+
+use PHPPeru\Exam\SimpleExam;
 
 /**
  * Test class for SimpleExam.
