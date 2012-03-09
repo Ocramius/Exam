@@ -97,7 +97,7 @@ class SimpleExamTest extends \PHPUnit_Framework_TestCase
      * Checks that events regarding the lifecycle are triggered correctly and
      * in the correct order when starting and completing an exam.
      */
-    public function testEventsAreDispatchedDuringCompleteLifecycle()
+    public function testEventsAreDispatchedDuringCompletedLifecycle()
     {
         $startListener = $this->getMock('stdClass', array('startCallback'));
         $startListener
@@ -112,13 +112,58 @@ class SimpleExamTest extends \PHPUnit_Framework_TestCase
         $abortListener = $this->getMock('stdClass', array('abortCallback'));
         $abortListener
             ->expects($this->never())
+            ->method('abortCallback');
+        $evd = $this->exam->getEventDispatcher();
+        $evd->addListener(
+            SimpleExam::EVENT_START,
+            array($startListener, 'startCallback')
+        );
+        $evd->addListener(
+            SimpleExam::EVENT_COMPLETE,
+            array($completeListener, 'completeCallback')
+        );
+        $evd->addListener(
+            SimpleExam::EVENT_ABORT,
+            array($abortListener, 'abortCallback')
+        );
+        $this->exam->start();
+        $this->exam->complete();
+    }
+    
+    /**
+     * Checks that events regarding the lifecycle are triggered correctly and
+     * in the correct order when starting and aborting an exam.
+     */
+    public function testEventsAreDispatchedDuringAbortedLifecycle()
+    {
+        $startListener = $this->getMock('stdClass', array('startCallback'));
+        $startListener
+            ->expects($this->once())
+            ->method('startCallback')
+            ->with($this->isInstanceOf('PHPPeru\Exam\Event'));
+        $completeListener = $this->getMock('stdClass', array('completeCallback'));
+        $completeListener
+            ->expects($this->never())
+            ->method('completeCallback');
+        $abortListener = $this->getMock('stdClass', array('abortCallback'));
+        $abortListener
+            ->expects($this->once())
             ->method('abortCallback')
             ->with($this->isInstanceOf('PHPPeru\Exam\Event'));
         $evd = $this->exam->getEventDispatcher();
-        $evd->addListener('start', array($startListener, 'startCallback'));
-        $evd->addListener('complete', array($completeListener, 'completeCallback'));
-        $evd->addListener('abort', array($abortListener, 'abortCallback'));
+        $evd->addListener(
+            SimpleExam::EVENT_START,
+            array($startListener, 'startCallback')
+        );
+        $evd->addListener(
+            SimpleExam::EVENT_COMPLETE,
+            array($completeListener, 'completeCallback')
+        );
+        $evd->addListener(
+            SimpleExam::EVENT_ABORT,
+            array($abortListener, 'abortCallback')
+        );
         $this->exam->start();
-        $this->exam->complete();
+        $this->exam->abort();
     }
 }
