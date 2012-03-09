@@ -92,7 +92,7 @@ class SimpleExamTest extends \PHPUnit_Framework_TestCase
             $this->exam->getEventDispatcher()
         );
     }
-    
+
     /**
      * Checks that events regarding the lifecycle are triggered correctly and
      * in the correct order when starting and completing an exam.
@@ -165,5 +165,58 @@ class SimpleExamTest extends \PHPUnit_Framework_TestCase
         );
         $this->exam->start();
         $this->exam->abort();
+    }
+
+    /**
+     * Checks that exception is thrown for when Exam cannot be started
+     * @return mixed
+     */
+    public function testThrowBadMethodCallExceptionWhenExamCannotBeStarted()
+    {
+        try {
+            $this->exam->start();
+            $this->exam->start();
+        }
+        catch (BadMethodCallException $expected) {
+            return;
+        }
+
+        $this->fail('An expected exception has not been raised.');
+    }
+
+    /**
+     * Checks that exception is thrown for when Exam cannot be completed
+     * @return mixed
+     */
+    public function testThrowBadMethodCallExceptionWhenExamCannotBeCompleted()
+    {
+        try {
+            $this->exam->start();
+            $this->exam->complete();
+            $this->exam->complete();
+        }
+        catch (BadMethodCallException $expected) {
+            return;
+        }
+
+        $this->fail('An expected exception has not been raised.');
+    }
+
+    /**
+     * Checks that exception is thrown for when Exam cannot be aborted
+     * @return mixed
+     */
+    public function testThrowBadMethodCallExceptionWhenExamCannotBeAborted()
+    {
+        try {
+            $this->exam->start();
+            $this->exam->abort();
+            $this->exam->abort();
+        }
+        catch (BadMethodCallException $expected) {
+            return;
+        }
+
+        $this->fail('An expected exception has not been raised.');
     }
 }
