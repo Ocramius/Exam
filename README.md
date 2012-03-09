@@ -1,5 +1,8 @@
 # Exam Prototype
 
+Ocramius: [![Build Status](https://secure.travis-ci.org/Ocramius/Exam.png)](http://travis-ci.org/Ocramius/Exam)
+cordoval: [![Build Status](https://secure.travis-ci.org/cordoval/Exam.png)](http://travis-ci.org/cordoval/Exam)
+
 ## Aim of the project
 
 This project is a prototype that should help in experimenting event-driven development in PHP.
