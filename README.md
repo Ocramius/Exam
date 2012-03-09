@@ -103,3 +103,17 @@ collected.
  4.  Eventually proceed with building a schema/entity/document graph compatible with
      the concepts of the `Doctrine\Common\Persistence` project (do not keep persistence
      in mind until interface is done!)
+
+## Instructions to Setup
+
+### Setup
+
+```sh
+~ ./setup
+```
+
+### Develop
+
+```sh
+~ ./develop
+```

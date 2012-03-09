@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 curl -s http://getcomposer.org/installer | php
-./composer.phar install
+php composer.phar install
 
