@@ -106,14 +106,19 @@ collected.
 
 ## Instructions to Setup
 
+If you are on windows please get the git for windows shell `here <http://msysgit.googlecode.com/files/Git-1.7.9-preview20120201.exe>`_.
+
 ### Setup
 
+First, fork off github the main repository at: http://github.com/phpperu/Exam
+
 ```sh
-~ ./setup
+~ git clone git@github.com:yourUserNameHere/Exam.git
+~ ./setup        # ./setup.bat if you are on windows
 ```
 
 ### Develop
 
 ```sh
-~ ./develop
+~ ./develop      # ./develop.bat if you are on windows
 ```
