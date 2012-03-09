@@ -51,7 +51,7 @@ class SimpleExam implements ExamInterface
      */
     public function start()
     {
-        if ($this->status !== self::STATUS_NEW) {
+        if (!$this->isNew()) {
             throw new BadMethodCallException('Exam is not new');
         }
         $this->status = self::STATUS_STARTED;
@@ -63,7 +63,7 @@ class SimpleExam implements ExamInterface
      */
     public function abort()
     {
-        if ($this->status !== self::STATUS_STARTED) {
+        if (!$this->isStarted()) {
             throw new BadMethodCallException('Exam is not started');
         }
         $this->status = self::STATUS_ABORTED;
@@ -75,7 +75,7 @@ class SimpleExam implements ExamInterface
      */
     public function complete()
     {
-        if ($this->status !== self::STATUS_STARTED) {
+        if (!$this->isStarted()) {
             throw new BadMethodCallException('Exam is not started');
         }
         $this->status = self::STATUS_COMPLETED;
