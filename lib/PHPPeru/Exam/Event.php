@@ -6,7 +6,7 @@ use Symfony\Component\EventDispatcher\Event as BaseEvent;
 /**
  * Provides information about an exam lifecycle event
  *
- * @author ocramius
+ * @author Marco Pivetta <ocramius@gmail.com>
  */
 class Event extends BaseEvent
 {

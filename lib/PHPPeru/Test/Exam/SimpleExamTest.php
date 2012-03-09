@@ -13,6 +13,8 @@ class SimpleExamTest extends \PHPUnit_Framework_TestCase
      * @var SimpleExam
      */
     protected $exam;
+    
+    protected $triggeredEvents = array();
 
     /**
      * Sets up the exam to be used
@@ -90,5 +92,33 @@ class SimpleExamTest extends \PHPUnit_Framework_TestCase
             $this->exam->getEventDispatcher()
         );
     }
-
+    
+    /**
+     * Checks that events regarding the lifecycle are triggered correctly and
+     * in the correct order when starting and completing an exam.
+     */
+    public function testEventsAreDispatchedDuringCompleteLifecycle()
+    {
+        $startListener = $this->getMock('stdClass', array('startCallback'));
+        $startListener
+            ->expects($this->once())
+            ->method('startCallback')
+            ->with($this->isInstanceOf('PHPPeru\Exam\Event'));
+        $completeListener = $this->getMock('stdClass', array('completeCallback'));
+        $completeListener
+            ->expects($this->once())
+            ->method('completeCallback')
+            ->with($this->isInstanceOf('PHPPeru\Exam\Event'));
+        $abortListener = $this->getMock('stdClass', array('abortCallback'));
+        $abortListener
+            ->expects($this->never())
+            ->method('abortCallback')
+            ->with($this->isInstanceOf('PHPPeru\Exam\Event'));
+        $evd = $this->exam->getEventDispatcher();
+        $evd->addListener('start', array($startListener, 'startCallback'));
+        $evd->addListener('complete', array($completeListener, 'completeCallback'));
+        $evd->addListener('abort', array($abortListener, 'abortCallback'));
+        $this->exam->start();
+        $this->exam->complete();
+    }
 }
