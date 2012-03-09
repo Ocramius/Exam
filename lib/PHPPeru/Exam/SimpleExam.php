@@ -117,4 +117,14 @@ class SimpleExam implements ExamInterface
     {
         return $this->status === self::STATUS_COMPLETED;
     }
+    
+    /**
+     * Retrieves the associated event dispatcher
+     *
+     * @return EventDispatcherInterface 
+     */
+    public function getEventDispatcher()
+    {
+        return $this->eventDispatcher;
+    }
 }
