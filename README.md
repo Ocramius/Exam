@@ -24,7 +24,7 @@ and so on.
     1.  Exam is booked/generated for various users (like at university). User gets notification
         about the assigned exam (optional)
     2.  User takes the exam by starting it
-    3.  User goes through the various step that compose the exam and answer/follow instructions
+    3.  User goes through the various steps that compose the exam and answer/follow instructions
         in each step
     4.  User completes the exam or eventually aborts it. Abort can either be explicit or implicit
         (user does not complete it in time, if time limit is set)
@@ -35,8 +35,8 @@ and so on.
 
 ### Suggested dependencies and patterns
 
-To achieve what defined in the requirements and still keep a very flexible structure,
-event driven design has been choosen as the best fit for this prototype.
+To achieve what is defined in the requirements and still keep a very flexible structure,
+event driven design has been chosen as the best suited pattern for this prototype.
 Other approaches and suggestions are welcome.
 
 Implementations should use either Symfony2's `Symfony\Component\EventDispatcher` component
@@ -59,7 +59,7 @@ collected.
       -   must provide its current status (`new`, `started`, `aborted`, `completed`)
       -   must behave like an `Iterator` for steps (moving to arbitrary step is not 
           a requirement)
-      -   must provide a evaluation
+      -   must provide an evaluation
       -   could provide a start and/or an end time limit
       -   must trigger events for
            -   `create` when created/planned
