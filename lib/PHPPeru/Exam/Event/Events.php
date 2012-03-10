@@ -18,7 +18,7 @@ namespace PHPPeru\Exam\Event;
  *
  * @author Luis Cordova <cordoval@gmail.com>
  */
-final abstract class Events
+abstract class Events
 {
     /**
      * The exam.start event is thrown each time a new is started
