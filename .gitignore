@@ -5,3 +5,5 @@ vendor/*
 composer.lock
 phpspec-composer.php
 composer.phar
+/nbproject/private/
+nbproject
