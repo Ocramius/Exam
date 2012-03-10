@@ -108,7 +108,7 @@ class SimpleExam implements ExamInterface
      */
     public function isAborted()
     {
-        return $this->status === Events::onAbortExamD;
+        return $this->status === Events::onAbortExam;
     }
 
     /**
@@ -118,7 +118,7 @@ class SimpleExam implements ExamInterface
      */
     public function isCompleted()
     {
-        return $this->status === Events::onCompleteExamD;
+        return $this->status === Events::onCompleteExam;
     }
     
     /**
