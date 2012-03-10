@@ -2,7 +2,8 @@
 namespace PHPPeru\Exam;
 
 use Symfony\Component\EventDispatcher\EventDispatcherInterface,
-    BadMethodCallException;
+    BadMethodCallException,
+    Iterator;
 
 /**
  * Descrobes a minimal API required for the concept of Exam
