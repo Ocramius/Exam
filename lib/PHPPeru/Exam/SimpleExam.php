@@ -39,7 +39,7 @@ class SimpleExam implements ExamInterface
      *
      * @var type 
      */
-    protected $status = self::STATUS_STARTED;
+    protected $status = self::STATUS_NEW;
     
     /**
      * Default constructor, initializes events 
@@ -102,7 +102,7 @@ class SimpleExam implements ExamInterface
      */
     public function isStarted()
     {
-        return $this->status === self::STATUS_NEW;
+        return $this->status === self::STATUS_STARTED;
     }
 
     /**
@@ -191,7 +191,7 @@ class SimpleExam implements ExamInterface
      */
     public function getEndTime()
     {
-        
+
     }
 
 }

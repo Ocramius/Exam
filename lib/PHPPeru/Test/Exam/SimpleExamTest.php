@@ -78,7 +78,6 @@ class SimpleExamTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->exam->isAborted());
         $this->assertFalse($this->exam->isCompleted());
     }
-    
 
     /**
      * Checks that newly created exams have an associated event dispatcher 
