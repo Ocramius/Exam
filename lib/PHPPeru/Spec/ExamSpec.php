@@ -23,7 +23,7 @@ use PHPPeru\Exam\SimpleExam;
  */
 class DescribeExam extends \PHPSpec\Context
 {
-    public function itShouldTestSomething()
+    public function xitShouldTestSomething()
     {
         $this->fail();
     }

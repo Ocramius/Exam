@@ -2,6 +2,7 @@
 namespace PHPPeru\Test\Exam;
 
 use PHPPeru\Exam\SimpleExam;
+use PHPPeru\Exam\Event\Events;
 
 /**
  * Test class for SimpleExam.
@@ -78,7 +79,6 @@ class SimpleExamTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($this->exam->isAborted());
         $this->assertFalse($this->exam->isCompleted());
     }
-    
 
     /**
      * Checks that newly created exams have an associated event dispatcher 
@@ -115,15 +115,15 @@ class SimpleExamTest extends \PHPUnit_Framework_TestCase
             ->method('abortCallback');
         $evd = $this->exam->getEventDispatcher();
         $evd->addListener(
-            SimpleExam::EVENT_START,
+            Events::onStartExam,
             array($startListener, 'startCallback')
         );
         $evd->addListener(
-            SimpleExam::EVENT_COMPLETE,
+            Events::onCompleteExam,
             array($completeListener, 'completeCallback')
         );
         $evd->addListener(
-            SimpleExam::EVENT_ABORT,
+            Events::onAbortExam,
             array($abortListener, 'abortCallback')
         );
         $this->exam->start();
@@ -152,15 +152,15 @@ class SimpleExamTest extends \PHPUnit_Framework_TestCase
             ->with($this->isInstanceOf('PHPPeru\Exam\Event'));
         $evd = $this->exam->getEventDispatcher();
         $evd->addListener(
-            SimpleExam::EVENT_START,
+            Events::onStartExam,
             array($startListener, 'startCallback')
         );
         $evd->addListener(
-            SimpleExam::EVENT_COMPLETE,
+            Events::onCompleteExam,
             array($completeListener, 'completeCallback')
         );
         $evd->addListener(
-            SimpleExam::EVENT_ABORT,
+            Events::onAbortExam,
             array($abortListener, 'abortCallback')
         );
         $this->exam->start();
