@@ -19,24 +19,22 @@ class SimpleStepTest extends \PHPUnit_Framework_TestCase {
     protected $step;
     
     public function setUp(){
-        $this->step = new SimpleStep();
+       
     }
     
     public function tearDown(){
         $this->step = null;
     }
         
+    /**
+     * @expectedException InvalidArgumentException
+     */
     public function testSetDescriptionWithNullValue()
-    {
-        $this->step->setDescription(null);  
-        $this->assertNull( $this->step->getDescription() );
+    {   
+        $this->step = new SimpleStep(null);
+        $this->exp( $this->step->getDescription() );
     }
     
-    public function testSetDescriptionWithEmptyString()
-    {
-        $this->step->setDescription("");  
-        $this->assertNull( $this->step->getDescription() );
-    }
     
 }
 
