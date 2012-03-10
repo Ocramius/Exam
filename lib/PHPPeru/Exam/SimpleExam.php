@@ -23,6 +23,10 @@ class SimpleExam implements ExamInterface
     const STATUS_ABORTED    = 2;
     const STATUS_COMPLETED  = 4;
 
+    const EVENT_START       = 'start';
+    const EVENT_ABORT       = 'abort';
+    const EVENT_COMPLETE    = 'complete';
+
     /**
      * Event dispatcher used internally to trigger events during lifecycle
      *
@@ -35,7 +39,7 @@ class SimpleExam implements ExamInterface
      *
      * @var type 
      */
-    protected $status = Events::onStartExam;
+    protected $status = self::STATUS_STARTED;
     
     /**
      * Default constructor, initializes events 
@@ -53,7 +57,7 @@ class SimpleExam implements ExamInterface
         if (!$this->isNew()) {
             throw new BadMethodCallException('Exam is not new');
         }
-        $this->status = Events::onStartExam;
+        $this->status = self::STATUS_STARTED;
         $this->eventDispatcher->dispatch(Events::onStartExam, new Event($this));
     }
 
@@ -65,7 +69,7 @@ class SimpleExam implements ExamInterface
         if (!$this->isStarted()) {
             throw new BadMethodCallException('Exam is not started');
         }
-        $this->status = Events::onAbortExam;
+        $this->status = self::STATUS_ABORTED;
         $this->eventDispatcher->dispatch(Events::onAbortExam, new Event($this));
     }
 
@@ -77,7 +81,7 @@ class SimpleExam implements ExamInterface
         if (!$this->isStarted()) {
             throw new BadMethodCallException('Exam is not started');
         }
-        $this->status = Events::onCompleteExam;
+        $this->status = self::STATUS_COMPLETED;
         $this->eventDispatcher->dispatch(Events::onCompleteExam, new Event($this));
     }
 
@@ -88,7 +92,7 @@ class SimpleExam implements ExamInterface
      */
     public function isNew()
     {
-        return $this->status === Events::onStartExam;
+        return $this->status === self::STATUS_NEW;
     }
 
     /**
@@ -98,7 +102,7 @@ class SimpleExam implements ExamInterface
      */
     public function isStarted()
     {
-        return $this->status === Events::onStartExam;
+        return $this->status === self::STATUS_NEW;
     }
 
     /**
@@ -108,7 +112,7 @@ class SimpleExam implements ExamInterface
      */
     public function isAborted()
     {
-        return $this->status === Events::onAbortExam;
+        return $this->status === self::STATUS_ABORTED;
     }
 
     /**
@@ -118,7 +122,7 @@ class SimpleExam implements ExamInterface
      */
     public function isCompleted()
     {
-        return $this->status === Events::onCompleteExam;
+        return $this->status === self::STATUS_COMPLETED;
     }
     
     /**
