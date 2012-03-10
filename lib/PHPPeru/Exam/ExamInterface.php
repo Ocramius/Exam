@@ -32,4 +32,23 @@ interface ExamInterface
      * @throws BadMethodCallException if the exam can't be completed 
      */
     public function complete();
+
+    /**
+     * Create exam evaluation
+     *
+     * @throws BadMethodCallException if the exam can't be evaluated
+     */
+    public function evaluate();
+
+    /**
+     * Gets current step
+     */
+    public function getCurrentStep();
+
+    /**
+     * Gets time left
+     */
+    public function getTimeLeft();
+
+    
 }
