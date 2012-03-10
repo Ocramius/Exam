@@ -131,4 +131,39 @@ class SimpleExam implements ExamInterface
     {
         return $this->eventDispatcher;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function current() {
+        throw new BadMethodCallException('Not implemented');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function key() {
+        throw new BadMethodCallException('Not implemented');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function next() {
+        throw new BadMethodCallException('Not implemented');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function rewind() {
+        throw new BadMethodCallException('Not implemented');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function valid() {
+        throw new BadMethodCallException('Not implemented');
+    }
 }
