@@ -33,4 +33,52 @@ interface ExamInterface extends Iterator
      * @throws BadMethodCallException if the exam can't be completed 
      */
     public function complete();
+
+    /**
+     * Create exam evaluation
+     * @return Evaluation
+     * @throws BadMethodCallException if the exam can't be evaluated
+     */
+    public function getEvaluation();
+
+    /**
+     * @return DateTime
+     */
+    public function getStartTime();
+
+    /**
+     * @return DateTime
+     */
+    public function getEndTime();
+
+
+    /**
+     * Checks if the exam is new
+     *
+     * @return bool
+     */
+    public function isNew();
+
+    /**
+     * Checks if the exam has been started
+     *
+     * @return bool
+     */
+    public function isStarted();
+
+    /**
+     * Checks if the exam has been aborted
+     *
+     * @return bool
+     */
+    public function isAborted();
+
+    /**
+     * Checks if the exam has been completed
+     *
+     * @return bool
+     */
+    public function isCompleted();
+
+    
 }

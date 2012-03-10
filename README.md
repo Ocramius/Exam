@@ -125,3 +125,16 @@ First, fork off github the main repository at: http://github.com/phpperu/Exam
 ```sh
 ~ ./develop      # ./develop.bat if you are on windows
 ```
+
+## Tentative Agenda
+
+1. Fast PR Tutorial (20 minutes)
+
+2. - Assign Tickets, creating groups + Support/QA group: 4 -> 7 groups
+   - 2 rooms - 2 projectors - skype speakers
+
+3. map reduce emphasis into 20% of tickets
+   - merge or refactor groups
+   - have them work on this reduced number of PRs
+
+4. retrospective and final MERGE
