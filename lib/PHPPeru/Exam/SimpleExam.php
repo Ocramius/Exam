@@ -169,4 +169,29 @@ class SimpleExam implements ExamInterface
     public function valid() {
         throw new BadMethodCallException('Not implemented');
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getEvaluation()
+    {
+
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getStartTime()
+    {
+
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getEndTime()
+    {
+        
+    }
+
 }

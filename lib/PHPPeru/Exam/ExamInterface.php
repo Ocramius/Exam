@@ -39,7 +39,7 @@ interface ExamInterface extends Iterator
      * @return Evaluation
      * @throws BadMethodCallException if the exam can't be evaluated
      */
-    public function evaluate();
+    public function getEvaluation();
 
     /**
      * @return DateTime
