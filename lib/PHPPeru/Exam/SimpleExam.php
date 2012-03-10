@@ -23,6 +23,8 @@ class SimpleExam implements ExamInterface
     const STATUS_ABORTED    = 2;
     const STATUS_COMPLETED  = 4;
 
+    private $var = array();
+
     /**
      * Event dispatcher used internally to trigger events during lifecycle
      *
@@ -40,9 +42,12 @@ class SimpleExam implements ExamInterface
     /**
      * Default constructor, initializes events 
      */
-    public function __construct()
+    public function __construct($array)
     {
         $this->eventDispatcher = new EventDispatcher();
+        if (is_array($array)) {
+           $this->var = $array;
+        }
     }
 
     /**
