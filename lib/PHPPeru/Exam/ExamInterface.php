@@ -51,5 +51,34 @@ interface ExamInterface extends Iterator
      */
     public function getTimeLeft();
 
+
+    /**
+     * Checks if the exam is new
+     *
+     * @return bool
+     */
+    public function isNew();
+
+    /**
+     * Checks if the exam has been started
+     *
+     * @return bool
+     */
+    public function isStarted();
+
+    /**
+     * Checks if the exam has been aborted
+     *
+     * @return bool
+     */
+    public function isAborted();
+
+    /**
+     * Checks if the exam has been completed
+     *
+     * @return bool
+     */
+    public function isCompleted();
+
     
 }
