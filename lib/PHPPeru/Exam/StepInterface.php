@@ -4,8 +4,9 @@ namespace PHPPeru\Exam;
 interface StepInterface {
      
     public function getDescription();
-    public function setStatus($status);
-    public function getStatus();
+    public function isNew();
+    public function isRead();
+    public function isAnswered();
     
 }
 

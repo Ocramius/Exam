@@ -28,7 +28,7 @@ class SimpleStep implements StepInterface {
         }
         else
         {
-            throw new InvalidArgumentException("Description is already defined or the passed value is not valid.");
+            throw new \InvalidArgumentException("Description is already defined or the passed value is not valid.");
         }
     }
 
@@ -36,12 +36,20 @@ class SimpleStep implements StepInterface {
         return $this->description;
     }
 
-    public function getStatus() {
-        return $this->description;
-    }
-
     public function setStatus($status) {
         $this->status = $status;
+    }
+    
+    public function isNew() {
+        return $this->status == self::STATUS_NEW;
+    }
+
+    public function isRead() {
+        return $this->status == self::STATUS_READ;
+    }
+
+    public function isAnswered() {
+        return $this->status == self::STATUS_ANSWERED;
     }
 
 }
