@@ -36,20 +36,20 @@ interface ExamInterface extends Iterator
 
     /**
      * Create exam evaluation
-     *
+     * @return Evaluation
      * @throws BadMethodCallException if the exam can't be evaluated
      */
     public function evaluate();
 
     /**
-     * Gets current step
+     * @return DateTime
      */
-    public function getCurrentStep();
+    public function getStartTime();
 
     /**
-     * Gets time left
+     * @return DateTime
      */
-    public function getTimeLeft();
+    public function getEndTime();
 
 
     /**
