@@ -23,10 +23,6 @@ class SimpleExam implements ExamInterface
     const STATUS_ABORTED    = 2;
     const STATUS_COMPLETED  = 4;
 
-    const EVENT_START       = 'start';
-    const EVENT_ABORT       = 'abort';
-    const EVENT_COMPLETE    = 'complete';
-
     /**
      * Event dispatcher used internally to trigger events during lifecycle
      *
