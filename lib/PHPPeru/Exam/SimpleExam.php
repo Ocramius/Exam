@@ -17,11 +17,12 @@ use PHPPeru\Exam\Event\Events;
  */
 class SimpleExam implements ExamInterface
 {
-    
     const STATUS_NEW        = 0;
     const STATUS_STARTED    = 1;
     const STATUS_ABORTED    = 2;
     const STATUS_COMPLETED  = 4;
+
+    private $stepCollection = array();
 
     /**
      * Event dispatcher used internally to trigger events during lifecycle
@@ -29,19 +30,25 @@ class SimpleExam implements ExamInterface
      * @var EventDispatcherInterface
      */
     protected $eventDispatcher;
-    
+
     /**
      * Defines the current status of the exam
      *
-     * @var type 
+     * @var type
      */
     protected $status = self::STATUS_NEW;
-    
+
     /**
      * Default constructor, initializes events 
      */
-    public function __construct()
+    public function __construct(array $stepCollection)
     {
+        foreach ($stepCollection as $value) {
+            if (!$value instanceof StepInterface) {
+                throw new \Exception('Argument has element in array not of object type StepInterface.');
+            }
+        }
+        $this->stepCollection = $stepCollection;
         $this->eventDispatcher = new EventDispatcher();
     }
 
@@ -120,7 +127,7 @@ class SimpleExam implements ExamInterface
     {
         return $this->status === self::STATUS_COMPLETED;
     }
-    
+
     /**
      * Retrieves the associated event dispatcher
      *
@@ -131,39 +138,55 @@ class SimpleExam implements ExamInterface
         return $this->eventDispatcher;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function current() {
-        throw new BadMethodCallException('Not implemented');
+    public function setSteps(array $stepCollection)
+    {
+        $this->stepCollection = $stepCollection;
+    }
+
+    public function getSteps()
+    {
+        return $this->stepCollection;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function key() {
-        throw new BadMethodCallException('Not implemented');
+    public function current()
+    {
+        return current($this->stepCollection);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function next() {
-        throw new BadMethodCallException('Not implemented');
+    public function key()
+    {
+        return key($this->stepCollection);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function rewind() {
-        throw new BadMethodCallException('Not implemented');
+    public function next()
+    {
+        return next($this->stepCollection);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function valid() {
-        throw new BadMethodCallException('Not implemented');
+    public function rewind()
+    {
+        reset($this->stepCollection);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function valid()
+    {
+        $key = key($this->stepCollection);
+        return $key !== null && $key !== false;
     }
 
     /**
@@ -171,7 +194,11 @@ class SimpleExam implements ExamInterface
      */
     public function getEvaluation()
     {
+        if (empty($this->stepCollection)) {
+            throw new \LogicException('Cannot evaluate with no steps.');
+        }
 
+        throw new BadMethodCallException('No criteria defined yet.');
     }
 
     /**
@@ -179,7 +206,7 @@ class SimpleExam implements ExamInterface
      */
     public function getStartTime()
     {
-
+        throw new BadMethodCallException('Not implemented');
     }
 
     /**
@@ -187,7 +214,7 @@ class SimpleExam implements ExamInterface
      */
     public function getEndTime()
     {
-
+        throw new BadMethodCallException('Not implemented');
     }
 
 }
