@@ -181,7 +181,12 @@ class SimpleExam implements ExamInterface
      */
     public function getEvaluation()
     {
-        throw new BadMethodCallException('Not implemented');
+        if(empty($this->stepCollection))
+        {
+            throw new \LogicException('Cannot evaluate with no steps.');
+        }
+
+        throw new BadMethodCallException('No criteria defined yet.');
     }
 
     /**
