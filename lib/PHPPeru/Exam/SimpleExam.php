@@ -140,6 +140,16 @@ class SimpleExam implements ExamInterface
         return $this->eventDispatcher;
     }
 
+    public function setSteps(array $stepCollection)
+    {
+        $this->stepCollection = $stepCollection;
+    }
+
+    public function getSteps()
+    {
+        return $this->stepCollection;
+    }
+
     /**
      * {@inheritdoc}
      */
