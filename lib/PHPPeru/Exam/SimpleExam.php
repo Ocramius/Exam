@@ -194,8 +194,7 @@ class SimpleExam implements ExamInterface
      */
     public function getEvaluation()
     {
-        if (empty($this->stepCollection))
-        {
+        if (empty($this->stepCollection)) {
             throw new \LogicException('Cannot evaluate with no steps.');
         }
 
