@@ -144,35 +144,36 @@ class SimpleExam implements ExamInterface
      * {@inheritdoc}
      */
     public function current() {
-        throw new BadMethodCallException('Not implemented');
+        return current($this->stepCollection);
     }
 
     /**
      * {@inheritdoc}
      */
     public function key() {
-        throw new BadMethodCallException('Not implemented');
+        return key($this->stepCollection);
     }
 
     /**
      * {@inheritdoc}
      */
     public function next() {
-        throw new BadMethodCallException('Not implemented');
+        return next($this->stepCollection);
     }
 
     /**
      * {@inheritdoc}
      */
     public function rewind() {
-        throw new BadMethodCallException('Not implemented');
+        reset($this->stepCollection);
     }
 
     /**
      * {@inheritdoc}
      */
     public function valid() {
-        throw new BadMethodCallException('Not implemented');
+        $key = key($this->stepCollection);
+        return $key !== null && $key !== false;
     }
 
     /**
@@ -180,7 +181,7 @@ class SimpleExam implements ExamInterface
      */
     public function getEvaluation()
     {
-
+        throw new BadMethodCallException('Not implemented');
     }
 
     /**
@@ -188,7 +189,7 @@ class SimpleExam implements ExamInterface
      */
     public function getStartTime()
     {
-
+        throw new BadMethodCallException('Not implemented');
     }
 
     /**
@@ -196,7 +197,7 @@ class SimpleExam implements ExamInterface
      */
     public function getEndTime()
     {
-
+        throw new BadMethodCallException('Not implemented');
     }
 
 }
