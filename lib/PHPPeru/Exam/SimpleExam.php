@@ -17,7 +17,6 @@ use PHPPeru\Exam\Event\Events;
  */
 class SimpleExam implements ExamInterface
 {
-    
     const STATUS_NEW        = 0;
     const STATUS_STARTED    = 1;
     const STATUS_ABORTED    = 2;
@@ -31,11 +30,11 @@ class SimpleExam implements ExamInterface
      * @var EventDispatcherInterface
      */
     protected $eventDispatcher;
-    
+
     /**
      * Defines the current status of the exam
      *
-     * @var type 
+     * @var type
      */
     protected $status = self::STATUS_NEW;
     
@@ -44,8 +43,7 @@ class SimpleExam implements ExamInterface
      */
     public function __construct(array $stepCollection)
     {
-        foreach($stepCollection as $value)
-        {
+        foreach($stepCollection as $value) {
             if (!$value instanceof StepInterface) {
                 throw new \Exception('Argument has element in array not of object type StepInterface.');
             }
@@ -129,7 +127,7 @@ class SimpleExam implements ExamInterface
     {
         return $this->status === self::STATUS_COMPLETED;
     }
-    
+
     /**
      * Retrieves the associated event dispatcher
      *
@@ -153,35 +151,40 @@ class SimpleExam implements ExamInterface
     /**
      * {@inheritdoc}
      */
-    public function current() {
+    public function current()
+    {
         return current($this->stepCollection);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function key() {
+    public function key()
+    {
         return key($this->stepCollection);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function next() {
+    public function next()
+    {
         return next($this->stepCollection);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function rewind() {
+    public function rewind()
+    {
         reset($this->stepCollection);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function valid() {
+    public function valid()
+    {
         $key = key($this->stepCollection);
         return $key !== null && $key !== false;
     }

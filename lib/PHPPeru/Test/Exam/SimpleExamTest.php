@@ -147,7 +147,7 @@ class SimpleExamTest extends TestCase
         $this->exam->start();
         $this->exam->complete();
     }
-    
+
     /**
      * Checks that events regarding the lifecycle are triggered correctly and
      * in the correct order when starting and aborting an exam.
@@ -229,7 +229,7 @@ class SimpleExamTest extends TestCase
         );
         $this->exam->setSteps($steps);
         $this->assertEquals(0, $this->exam->key());
-   	    $this->assertTrue($this->exam->valid());
+        $this->assertTrue($this->exam->valid());
         $this->assertSame($steps[0], $this->exam->current());
         $this->exam->next();
         $this->assertEquals(1, $this->exam->key());
