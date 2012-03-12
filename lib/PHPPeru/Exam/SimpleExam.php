@@ -37,13 +37,13 @@ class SimpleExam implements ExamInterface
      * @var type
      */
     protected $status = self::STATUS_NEW;
-    
+
     /**
      * Default constructor, initializes events 
      */
     public function __construct(array $stepCollection)
     {
-        foreach($stepCollection as $value) {
+        foreach ($stepCollection as $value) {
             if (!$value instanceof StepInterface) {
                 throw new \Exception('Argument has element in array not of object type StepInterface.');
             }
@@ -194,7 +194,7 @@ class SimpleExam implements ExamInterface
      */
     public function getEvaluation()
     {
-        if(empty($this->stepCollection))
+        if (empty($this->stepCollection))
         {
             throw new \LogicException('Cannot evaluate with no steps.');
         }
