@@ -2,6 +2,7 @@
 namespace PHPPeru\Test\Exam;
 
 use PHPPeru\Exam\SimpleExam;
+use PHPPeru\Exam\SimpleStep;
 use PHPPeru\Exam\Event\Events;
 
 /**
@@ -14,7 +15,15 @@ class SimpleExamTest extends \PHPUnit_Framework_TestCase
      * @var SimpleExam
      */
     protected $exam;
-    
+
+    /**
+     * @var SimpleStep Collection
+     */
+    protected $stepCollection = array();
+
+    /**
+     * @var Events
+     */
     protected $triggeredEvents = array();
 
     /**
@@ -22,7 +31,10 @@ class SimpleExamTest extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->exam = new SimpleExam();
+        $this->stepCollection[] = new SimpleStep('question 1');
+        $this->stepCollection[] = new SimpleStep('question 2');
+
+        $this->exam = new SimpleExam($this->stepCollection);
     }
 
     /**
@@ -200,5 +212,9 @@ class SimpleExamTest extends \PHPUnit_Framework_TestCase
         $this->exam->start();
         $this->exam->abort();
         $this->exam->abort();
+    }
+
+    public function testCurrent(){
+        //$this->exam->current();
     }
 }
