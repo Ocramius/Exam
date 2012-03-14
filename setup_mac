@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+curl -s http://getcomposer.org/installer | php -d detect_unicode=0
+php composer.phar install
+
